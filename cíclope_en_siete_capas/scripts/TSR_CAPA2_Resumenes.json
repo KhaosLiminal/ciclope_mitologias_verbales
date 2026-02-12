@@ -1,0 +1,15 @@
+{
+  "metadata": {
+    "capa": "CAPA 2: Resúmenes Conceptuales",
+    "fecha_generacion": "2026-02-11T19:10:30.062665",
+    "total_tsr": 0,
+    "exitosos": 0,
+    "fallidos": 19,
+    "tasa_exito": "0.0%",
+    "total_palabras": 0,
+    "promedio_palabras_tsr": 0,
+    "modelo": "sonar-pro",
+    "archivo_origen": "TSR_CAPA1_FINAL.json"
+  },
+  "resultados": []
+}
