@@ -78,11 +78,45 @@ Mientras la lectura de primer orden se pregunta "¿qué dice este texto?", TRCO 
 
 **TSR101 como herramienta TRCO:**
 
-Este documento no solo presenta teoría crítica: es un dispositivo aplicable. El TSR (The Second Order Read) funciona como unidad didáctica modular que puede integrarse en talleres de 90 minutos, seminarios de 4 sesiones, o ciclos de formación continua. Cada TSR opera como caso de estudio que modela cómo se ejecuta una lectura de segundo orden: no interpretamos qué dice Barthes sobre el autor, sino qué hace posible que hoy la cuestión de la autoría regrese como problema urgente en contextos de IA generativa. El TSR101 entrena en detectar los marcos (muerte del autor, función-autor, función-prompt) que estructuran cómo pensamos la escritura, para luego aplicar esa competencia a cualquier texto, imagen, discurso que circule en tu entorno inmediato.
+Este documento no solo presenta teoría crítica: es un dispositivo aplicable. El TSR (The Second Order Read) funciona como unidad didáctica modular que puede integrarse en talleres de 90 minutos, seminarios de 4 sesiones, o ciclos de formación continua. Cada TSR opera como caso de estudio que modela cómo se ejecuta una lectura de segundo orden: no interpretamos qué dice Barthes sobre el autor, sino qué hace posible que hoy la cuestión de la autoría regrese como problema urgente en contextos de IA generativa. 
+
+El TSR101 entrena en detectar los marcos (muerte del autor, función-autor, función-prompt) que estructuran cómo pensamos la escritura, para luego aplicar esa competencia a cualquier texto, imagen, discurso que circule en tu entorno inmediato.
 
 Si trabajas en educación, mediación o gestión cultural, TRCO te ofrece un lenguaje común para nombrar lo que ya intuyes: que leer no es descifrar, sino desmontar. Y que enseñar a leer es enseñar a preguntar quién construyó las reglas del juego.
 
+TSR101 no busca lectores: busca cómplices en la incomodidad conceptual. Si llegaste hasta aquí, ya sabes si esto es para ti.
+
 TSR101 no es divulgación ligera ni ensayo académico tradicional. Está dirigido a lectores que desean pensar la lectura desde exégesis hermenéutica y aplicar parte del manual TRCO en su entorno inmediato, no solo consumir interpretaciones o hacer scroll para curiosear.
+
+**Derechos y uso**
+
+TSR101 es una obra editorial protegida.
+Tu compra incluye:
+
+- Acceso al documento completo en PDF
+- Grabado digital en alta resolución (300 dpi)
+- Licencia de uso personal (no comercial)
+
+Puedes descargarlo e imprimirlo para ti. 
+No puedes revenderlo, redistribuirlo ni usarlo con fines comerciales.
+
+El grabado forma parte del dispositivo crítico del proyecto. 
+No se vende como obra artística independiente.
+
+El copyright aquí no afirma un “origen puro”, sino una posición de responsabilidad editorial dentro del sistema cultural de atribución.
+
+**Uso permitido**
+
+**Descarga personal.** 
+
+Impresión personal. 
+Uso educativo no comercial.
+No reventa. 
+No redistribución. 
+No uso comercial.
+
+El grabado es parte del proyecto crítico TSR.
+No es stock, no es NFT, no es activo transferible.
 
 Precio: USD $15 | Publicación: 01.FEB.2026
 Descuento suscriptores anuales Substack: 25% automático
@@ -129,27 +163,143 @@ Find out more at in instagram.com/tr3z.milimetroz/
 
 ---
 
-# **NOTA SOBRE EL COPYRIGHT: EL PRIMER GLITCH**
+# 4. NOTA SOBRE EL COPYRIGHT.
 
-Este documento declara copyright bajo el nombre de Sarayu Aguilar inmediatamente después de argumentar que la autoría es ficción distribuida. Esto no es contradicción: es demostración.
+## **→Central principle:**
 
-El copyright no protege un "origen único" porque ningún texto tiene origen único. Protege una **posición de enunciación**: el derecho a decidir cómo circula este ensamblaje específico de citas, argumentos, diseños, que llamamos TSR101.
+Este documento declara copyright bajo el nombre de Sarayu Aguilar inmediatamente después de argumentar que la autoría es ficción distribuida.
 
-Barthes firmó "La muerte del autor". Foucault declaró autoría sobre "¿Qué es un autor?". Este TSR hace lo mismo: **usa las herramientas de atribución mientras las expone como dispositivos históricos**.
+Esto no es contradicción: es demostración.
 
-Lo digital se copia y se pega. El copyright no impide la copia: **regula quién tiene autoridad para legitimarla**. Al declarar "All rights reserved", no afirmo que este texto sea "mío" en sentido ontológico. Afirmo que participo críticamente del sistema de atribución que permite que algo circule como "obra".
+El copyright no protege un "origen único "porque ningún texto tiene origen único.
 
-Esta declaración de copyright es el primer ejercicio de lectura de segundo orden: no la leas como protección legal, sino como **performance de la función-autor** operando en tiempo real.
+Protege una posición de enunciación: el derecho a decidir cómo circula este ensamblaje específico de citas, argumentos, diseños, que llamamos TSR101.
 
-Si copias este texto sin atribución, no violas una verdad natural. Violas una convención cultural. Y esa diferencia es todo lo que este TSR intenta mostrar.
+Barthes firmó "La muerte del autor".
+
+Foucault declaró autoría sobre "¿Qué es un autor?".
+
+Este TSR hace lo mismo: usa las herramientas de atribución mientras las expone como dispositivos históricos.
+
+Lo digital se copia y se pega.El copyright no impide la copia:
+regula quién tiene autoridad para legitimarla.
+
+Al declarar "All rights reserved",no afirmo que este texto sea "mío" en sentido ontológico.
+
+Afirmo que participo críticamente del sistema de atribución que permite que algo circule como "obra".
+
+Esta declaración de copyright es el primer ejercicio de lectura de segundo orden: no la leas como protección legal, sino como performance de la función-autor operando en tiempo real.
+
+Si copias este texto sin atribución, no violas una verdad natural. 
+
+Violas una convención cultural y esa diferencia es todo lo que este TSR intenta mostrar.
 
 ---
 
-# CLÚSTER TEXTUAL/VISUAL • Grabado
+# 5. NOTA CRÍTICA: EL COPYRIGHT.
 
-Barthes advierte que el texto es “un tejido de citas” y que la intención del autor es ilegible e insuficiente. Matar al Autor no es un crimen contra la literatura, sino una liberación del lector: ningún sentido viene garantizado desde arriba. Cada lectura recompone el texto como si se escribiera por primera vez. En un universo donde prompts y modelos intervienen, ¿no se vuelve aún más urgente asumir que la autoridad nunca fue individual?
+## **→Autoría algorítmica y la ficción del origen.**
 
-**FEB.01.2026**
+Este TSR utiliza sistemas de generación algorítmica para producir parte de su material visual. Este hecho no es un detalle técnico ni un gesto estético: es una condición estructural del argumento.
+
+En los debates contemporáneos sobre inteligencia artificial, la autoría suele plantearse como un problema moral: ¿quién creó esto?, ¿a quién pertenece?, ¿es legítimo firmarlo?
+
+Este TSR propone desplazar la pregunta.
+
+Los sistemas algorítmicos no “crean” en sentido humano, pero tampoco son meras herramientas pasivas. Operan como dispositivos de recombinación, entrenados sobre archivos culturales masivos, que redistribuyen estilos, patrones y convenciones ya existentes.  
+
+En ese sentido, no inauguran la muerte del autor: la hacen visible.
+
+El grabado incluido en este documento no tiene un origen puro. 
+
+No es “obra” de una máquina ni expresión de una subjetividad individual. Es el resultado de:
+
+- modelos entrenados sobre archivos culturales previos,
+- prompts diseñados desde marcos teóricos específicos,
+- procesos de selección, descarte y curaduría humana,
+- decisiones editoriales que fijan una versión entre muchas posibles.
+
+¿Dónde está entonces el autor?
+
+Siguiendo a Foucault, el nombre propio que firma este TSR no designa un origen creativo, sino una función de atribución: un punto de responsabilidad que permite que este ensamblaje circule como obra, sea citado, criticado, comprado o rechazado.
+
+Firmar este TSR no significa reclamar propiedad ontológica sobre el contenido. Significa asumir responsabilidad política y editorial por esta configuración específica de textos, imágenes y argumentos.
+
+La numeración del grabado como “TSR101/TSR120" (1/20) no busca producir escasez real. Declara una escasez simbólica: cada TSR fija una mirada parcial, una perspectiva situada, una decisión entre múltiples iteraciones posibles, como la del Cíclope. Lo que se colecciona no es la imagen, sino el acto de selección.
+
+En un entorno donde lo digital se copia y se pega infinitamente, la autoría no desaparece: se redistribuye. El problema ya no es quién creó algo primero, sino quién decide cómo se articula, cómo se legitima y bajo qué condiciones circula.
+
+Este TSR no resuelve la contradicción entre crítica de la autoría y uso de sistemas de atribución. La sostiene deliberadamente. No existe una posición exterior desde la cual criticar los dispositivos de legitimación sin operar dentro de ellos.
+
+La autoría algorítmica no elimina la función-autor.
+
+La expone como lo que siempre fue: una convención histórica, una tecnología cultural, un punto de responsabilidad en un sistema de circulación del sentido.
+
+---
+
+# **6. BLOQUE LEGAL MX.**
+
+## **→CONDICIONES DE USO mx y marco internacional.**
+
+© 2026 Sarayu Aguilar
+
+Todos los derechos reservados.
+
+Este documento constituye una obra literaria y editorial compuesta, protegida conforme a la legislación mexicana vigente en materia de derechos de autor y a los tratados internacionales aplicables.
+
+La protección recae sobre la estructura, redacción, selección, disposición, diseño editorial, integración visual y ensamblaje conceptual del proyecto denominado TSR101.
+
+**1. Derechos sobre el texto**
+
+El contenido escrito está protegido como obra literaria.
+Queda prohibida su reproducción total o parcial, distribución, comunicación pública, transformación o explotación comercial sin autorización expresa y por escrito del titular.
+
+Se permite la cita parcial con fines académicos o críticos, siempre que se incluya atribución completa.
+
+**2. Derechos sobre el material visual generado algorítmicamente**
+
+El grabado visual incluido en este documento:
+
+- es un archivo digital en alta resolución (300 dpi),
+- forma parte integral de la obra editorial compuesta,
+- no se comercializa como obra artística autónoma.
+
+Se concede al adquirente una licencia de uso personal, no exclusiva, no transferible y revocable, que permite:
+
+- descarga y almacenamiento personal,
+- impresión para uso personal o educativo no comercial.
+
+Queda estrictamente prohibido:
+
+- reventa del archivo,
+- redistribución digital,
+- uso comercial,
+- tokenización (NFT),
+- incorporación a productos derivados destinados a venta.
+
+El valor del grabado reside en su integración conceptual dentro de la serie TSR, no en su escasez material.
+
+**3. Sobre la autoría y los sistemas algorítmicos**
+
+Parte del material visual ha sido producido mediante sistemas de generación algorítmica. La titularidad declarada no implica autoría ontológica exclusiva sobre los insumos culturales que nutren dichos sistemas, sino responsabilidad editorial sobre la selección, configuración y circulación de este ensamblaje específico.
+
+El copyright protege la configuración concreta aquí fijada, no una pretensión de origen absoluto.
+
+**4. Jurisdicción**
+
+Para cualquier controversia derivada de la interpretación o ejecución de estas condiciones, las partes se someten a la legislación aplicable en México, sin perjuicio de los tratados internacionales vigentes.
+
+---
+
+# El asesinato del autor como acto de misericordia.
+CLÚSTER TEXTUAL/VISUAL • Grabado
+
+## TSR101
+CLÚSTER I
+
+## Barthes advierte que el texto es “un tejido de citas” y que la intención del autor es ilegible e insuficiente. Matar al Autor no es un crimen contra la literatura, sino una liberación del lector: ningún sentido viene garantizado desde arriba. Cada lectura recompone el texto como si se escribiera por primera vez. En un universo donde prompts y modelos intervienen, ¿no se vuelve aún más urgente asumir que la autoridad nunca fue individual?
+
+### **FEB.01.2026**
 
 ---
 
@@ -183,7 +333,7 @@ Este desplazamiento tiene consecuencias materiales inmediatas. Los debates sobre
 
 Pero la cuestión trasciende lo legal. Lo que está en juego es la distribución misma de la agencia creativa. Durante siglos, la autoría funcionó como dispositivo de atribución que conectaba textos con sujetos responsables. Ese vínculo permitía construir genealogías intelectuales, exigir rendición de cuentas, valorar obras según trayectorias. Ahora, ese vínculo se fragmenta: el texto ya no emana de una conciencia singular, sino que emerge de un campo distribuido donde humanos y no-humanos colaboran sin contrato previo.
 
-Algunos celebran esta fragmentación como liberación: al fin, la escritura La diferencia es que ahora esa ficción se ejecuta en tiempo real: en cada prompt, en cada generación, en cada firma que no firma nada.colectiva, anónima, posthumana que las vanguardias prometieron. Otros la denuncian como expropiación: las corporaciones tecnológicas se apropian del trabajo cultural acumulado para venderlo como servicio. Ambas lecturas capturan algo cierto, pero ignoran lo esencial: que la autoría nunca fue lo que creíamos. Siempre fue ficción, andamiaje, performance. La diferencia es que ahora la ficción se vuelve código ejecutable.
+Algunos celebran esta fragmentación como liberación: al fin, la escritura colectiva, anónima, posthumana que las vanguardias prometieron. La diferencia es que ahora esa ficción se ejecuta en tiempo real: en cada prompt, en cada generación, en cada firma que no firma nada. Otros la denuncian como expropiación: las corporaciones tecnológicas se apropian del trabajo cultural acumulado para venderlo como servicio. Ambas lecturas capturan algo cierto, pero ignoran lo esencial: que la autoría nunca fue lo que creíamos. Siempre fue ficción, andamiaje, performance. La diferencia es que ahora la ficción se vuelve código ejecutable.
 
 La genealogía crítica revisada en la sección anterior demuestra que el cuestionamiento del autor no nació ayer. Pero aquellos pensadores operaban en un mundo donde escribir seguía siendo un acto corporal, donde el lenguaje requería dedos sobre teclado o voz emitida. Hoy, escribir puede ser solicitar, parametrizar, iterar. El cuerpo que escribe ya no es solo humano: es una ensambladura de interfaces, APIs, capas de abstracción donde la intención se traduce, se interpreta, se ejecuta.
 
@@ -549,8 +699,6 @@ Este caso no resuelve si el texto es "bueno" o "malo", "auténtico" o "falso". D
 
 Usa este caso en tus contextos (docencia/mediación/gestión) como ejercicio de aplicación directa del marco teórico del TSR101. No es un ejemplo decorativo: es un laboratorio donde se puede practicar la lectura de segundo orden en tiempo real.
 
----
-
 # TEASER PARA SUBSTACK (250 palabras)
 
 ## **Título del post:** El Asesinato del Autor como Acto de Misericordia
@@ -596,6 +744,3 @@ Suscriptores anuales/fundadores: código de descuento en tu email.
 - **Pregunta para la comunidad:**
     
     ¿Ustedes escriben con IA? Si sí, ¿sienten que la autoría se diluye o se redistribuye? ¿Barthes les ayuda a pensar eso, o necesitan otros marcos? Compartan en comentarios.
-    
-
----
