@@ -1,6 +1,6 @@
 """
-TSR_CAPA2_Resumenes.py
-VERSIÓN CORREGIDA: Usa API nativa de Perplexity con requests
+TSR_CAPA2_Resumenes.py v5 (FINAL)
+CONFIANZA PLENA EN SONAR - SIN EXPERIMENTACIÓN
 """
 
 import json
@@ -20,7 +20,7 @@ ARCHIVO_ENTRADA = "TSR_CAPA1_FINAL.json"
 ARCHIVO_SALIDA = "TSR_CAPA2_Resumenes.json"
 
 # Parámetros
-MODELO = "sonar-pro"
+MODELO = "sonar"
 MAX_TOKENS = 2500
 TEMPERATURA = 0.7
 DELAY_SEGUNDOS = 6
@@ -118,7 +118,7 @@ def formatear_fuentes(fuentes):
 
 
 def generar_resumen(tsr):
-    """Genera resumen conceptual usando API nativa de Perplexity"""
+    """Genera resumen conceptual usando Sonar"""
     numero_tsr = tsr.get('tsr', 'N/A')
     titulo = tsr.get('titulo', 'Sin título')
     cluster = tsr.get('cluster', 'Sin cluster')
@@ -162,12 +162,17 @@ def generar_resumen(tsr):
     
     # Llamada a API
     try:
+        inicio = time.time()
+        
         response = requests.post(
             API_URL,
             json=payload,
             headers=headers,
             timeout=60
         )
+        
+        fin = time.time()
+        tiempo_generacion = fin - inicio
         
         # Verificar respuesta
         if response.status_code == 200:
@@ -178,6 +183,7 @@ def generar_resumen(tsr):
             return {
                 "resumen": resumen,
                 "num_palabras": num_palabras,
+                "tiempo_seg": round(tiempo_generacion, 2),
                 "exito": True
             }
         else:
@@ -201,14 +207,15 @@ def generar_resumen(tsr):
 
 def main():
     print("=" * 80)
-    print("📝 CAPA 2: RESÚMENES CONCEPTUALES (v2 - API Nativa)")
+    print("📝 CAPA 2: RESÚMENES CONCEPTUALES")
     print("=" * 80)
+    print(f"📊 Modelo: {MODELO.upper()}")
     
     # Cargar TSRs
     tsr_list, metadata_original = cargar_tsr_capa1()
     
     print(f"\n🎯 TSRs a procesar: {len(tsr_list)}")
-    print(f"📊 Costo estimado: ${len(tsr_list) * 0.004:.2f} USD")
+    print(f"📊 Costo estimado: ${len(tsr_list) * 0.0008:.3f} USD")
     print(f"⏱️  Tiempo estimado: ~{len(tsr_list) * 6 // 60 + 1} minutos")
     
     input("\n🚀 Presiona ENTER para comenzar...")
@@ -217,6 +224,7 @@ def main():
     resultados = []
     exitosos = 0
     fallidos = 0
+    tiempo_total = 0
     
     print("\n" + "=" * 80)
     
@@ -231,7 +239,7 @@ def main():
         resultado = generar_resumen(tsr)
         
         if resultado['exito']:
-            print(f"   ✅ {resultado['num_palabras']} palabras")
+            print(f"   ✅ {resultado['num_palabras']} palabras | {resultado['tiempo_seg']}s")
             
             resultados.append({
                 "tsr": numero_tsr,
@@ -239,11 +247,13 @@ def main():
                 "cluster": tsr.get('cluster', 'Sin cluster'),
                 "resumen": resultado['resumen'],
                 "num_palabras": resultado['num_palabras'],
+                "tiempo_generacion_seg": resultado['tiempo_seg'],
                 "num_fuentes_usadas": len(tsr.get('fuentes', [])),
                 "fecha_generacion": datetime.now().isoformat()
             })
             
             exitosos += 1
+            tiempo_total += resultado['tiempo_seg']
         else:
             print(f"   ❌ Error: {resultado.get('error', 'Desconocido')[:100]}")
             fallidos += 1
@@ -262,19 +272,22 @@ def main():
     print("=" * 80)
     
     total_palabras = sum(r['num_palabras'] for r in resultados)
-    promedio = total_palabras / len(resultados) if resultados else 0
+    promedio_palabras = total_palabras / len(resultados) if resultados else 0
+    promedio_tiempo = tiempo_total / exitosos if exitosos > 0 else 0
     
     datos_salida = {
         "metadata": {
             "capa": "CAPA 2: Resúmenes Conceptuales",
             "fecha_generacion": datetime.now().isoformat(),
+            "modelo": MODELO,
             "total_tsr": len(resultados),
             "exitosos": exitosos,
             "fallidos": fallidos,
             "tasa_exito": f"{(exitosos/len(tsr_list)*100):.1f}%",
             "total_palabras": total_palabras,
-            "promedio_palabras_tsr": round(promedio, 1),
-            "modelo": MODELO,
+            "promedio_palabras_tsr": round(promedio_palabras, 1),
+            "tiempo_total_seg": round(tiempo_total, 2),
+            "promedio_tiempo_tsr_seg": round(promedio_tiempo, 2),
             "archivo_origen": ARCHIVO_ENTRADA
         },
         "resultados": resultados
@@ -299,8 +312,10 @@ def main():
     
     if resultados:
         print(f"   • Palabras totales: {total_palabras:,}")
-        print(f"   • Promedio: {promedio:.1f} palabras/TSR")
+        print(f"   • Promedio: {promedio_palabras:.1f} palabras/TSR")
         print(f"   • Rango objetivo: 150-200 palabras")
+        print(f"   • Tiempo total: {tiempo_total:.1f}s ({tiempo_total/60:.1f} min)")
+        print(f"   • Velocidad promedio: {promedio_tiempo:.1f}s/TSR")
     
     print("\n" + "=" * 80)
     print("✅ Listo para CAPA 3" if exitosos > 0 else "⚠️  Revisar errores")
