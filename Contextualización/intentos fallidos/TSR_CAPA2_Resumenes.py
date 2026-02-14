@@ -1,26 +1,36 @@
 """
-TSR_CAPA2_Resumenes.py v5 (FINAL)
-CONFIANZA PLENA EN SONAR - SIN EXPERIMENTACIÓN
+TSR_CAPA2_Resumenes.py
+Genera resúmenes conceptuales de 150-200 palabras para cada TSR
+RUTA CORREGIDA: cíclope_en_siete_capas/scripts/
 """
 
 import json
 import time
-import requests
+import os
 from datetime import datetime
+from openai import OpenAI
 
 # ============================================================================
 # CONFIGURACIÓN
 # ============================================================================
 
+# API de Perplexity
 API_KEY = "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"
-API_URL = "https://api.perplexity.ai/chat/completions"
+client = OpenAI(api_key=API_KEY, base_url="https://api.perplexity.ai")
 
-# Rutas
+# Rutas (relativas a la carpeta scripts donde está este archivo)
 ARCHIVO_ENTRADA = "TSR_CAPA1_FINAL.json"
 ARCHIVO_SALIDA = "TSR_CAPA2_Resumenes.json"
 
+# Verificar que estamos en la carpeta correcta
+if not os.path.exists(ARCHIVO_ENTRADA):
+    print("❌ ERROR: No se encuentra TSR_CAPA1_FINAL.json")
+    print(f"📂 Ubicación actual: {os.getcwd()}")
+    print(f"💡 Asegúrate de ejecutar desde: cíclope_en_siete_capas/scripts/")
+    exit(1)
+
 # Parámetros
-MODELO = "sonar"
+MODELO = "sonar-pro"
 MAX_TOKENS = 2500
 TEMPERATURA = 0.7
 DELAY_SEGUNDOS = 6
@@ -84,6 +94,7 @@ def cargar_tsr_capa1():
     with open(ARCHIVO_ENTRADA, 'r', encoding='utf-8') as f:
         datos = json.load(f)
     
+    # Extraer TSRs según estructura
     tsr_list = []
     
     if 'clusters' in datos:
@@ -94,6 +105,7 @@ def cargar_tsr_capa1():
     elif 'resultados' in datos:
         tsr_list = datos['resultados']
     
+    # Ordenar por número de TSR
     tsr_list.sort(key=lambda x: int(x.get('tsr', 0)))
     
     print(f"   ✅ {len(tsr_list)} TSRs cargados")
@@ -118,7 +130,7 @@ def formatear_fuentes(fuentes):
 
 
 def generar_resumen(tsr):
-    """Genera resumen conceptual usando Sonar"""
+    """Genera resumen conceptual para un TSR usando Perplexity"""
     numero_tsr = tsr.get('tsr', 'N/A')
     titulo = tsr.get('titulo', 'Sin título')
     cluster = tsr.get('cluster', 'Sin cluster')
@@ -135,63 +147,34 @@ def generar_resumen(tsr):
         fuentes=fuentes_texto
     )
     
-    # Payload para la API
-    payload = {
-        "model": MODELO,
-        "messages": [
-            {
-                "role": "system",
-                "content": "Eres un teórico literario especializado en teoría crítica contemporánea. Redactas resúmenes densos y precisos con vocabulario académico."
-            },
-            {
-                "role": "user",
-                "content": prompt
-            }
-        ],
-        "max_tokens": MAX_TOKENS,
-        "temperature": TEMPERATURA,
-        "return_citations": False,
-        "return_images": False
-    }
-    
-    # Headers
-    headers = {
-        "Authorization": f"Bearer {API_KEY}",
-        "Content-Type": "application/json"
-    }
-    
     # Llamada a API
     try:
-        inicio = time.time()
-        
-        response = requests.post(
-            API_URL,
-            json=payload,
-            headers=headers,
-            timeout=60
+        response = client.chat.completions.create(
+            model=MODELO,
+            messages=[
+                {
+                    "role": "system",
+                    "content": "Eres un teórico literario especializado en teoría crítica contemporánea. Redactas resúmenes densos y precisos con vocabulario académico."
+                },
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+            max_tokens=MAX_TOKENS,
+            temperature=TEMPERATURA
         )
         
-        fin = time.time()
-        tiempo_generacion = fin - inicio
+        resumen = response.choices[0].message.content.strip()
         
-        # Verificar respuesta
-        if response.status_code == 200:
-            data = response.json()
-            resumen = data['choices'][0]['message']['content'].strip()
-            num_palabras = len(resumen.split())
-            
-            return {
-                "resumen": resumen,
-                "num_palabras": num_palabras,
-                "tiempo_seg": round(tiempo_generacion, 2),
-                "exito": True
-            }
-        else:
-            return {
-                "resumen": None,
-                "error": f"HTTP {response.status_code}: {response.text[:200]}",
-                "exito": False
-            }
+        # Contar palabras
+        num_palabras = len(resumen.split())
+        
+        return {
+            "resumen": resumen,
+            "num_palabras": num_palabras,
+            "exito": True
+        }
     
     except Exception as e:
         return {
@@ -209,13 +192,13 @@ def main():
     print("=" * 80)
     print("📝 CAPA 2: RESÚMENES CONCEPTUALES")
     print("=" * 80)
-    print(f"📊 Modelo: {MODELO.upper()}")
+    print(f"📂 Carpeta de trabajo: {os.getcwd()}")
     
     # Cargar TSRs
     tsr_list, metadata_original = cargar_tsr_capa1()
     
     print(f"\n🎯 TSRs a procesar: {len(tsr_list)}")
-    print(f"📊 Costo estimado: ${len(tsr_list) * 0.0008:.3f} USD")
+    print(f"📊 Costo estimado: ${len(tsr_list) * 0.004:.2f} USD")
     print(f"⏱️  Tiempo estimado: ~{len(tsr_list) * 6 // 60 + 1} minutos")
     
     input("\n🚀 Presiona ENTER para comenzar...")
@@ -224,7 +207,6 @@ def main():
     resultados = []
     exitosos = 0
     fallidos = 0
-    tiempo_total = 0
     
     print("\n" + "=" * 80)
     
@@ -239,7 +221,7 @@ def main():
         resultado = generar_resumen(tsr)
         
         if resultado['exito']:
-            print(f"   ✅ {resultado['num_palabras']} palabras | {resultado['tiempo_seg']}s")
+            print(f"   ✅ {resultado['num_palabras']} palabras")
             
             resultados.append({
                 "tsr": numero_tsr,
@@ -247,15 +229,13 @@ def main():
                 "cluster": tsr.get('cluster', 'Sin cluster'),
                 "resumen": resultado['resumen'],
                 "num_palabras": resultado['num_palabras'],
-                "tiempo_generacion_seg": resultado['tiempo_seg'],
                 "num_fuentes_usadas": len(tsr.get('fuentes', [])),
                 "fecha_generacion": datetime.now().isoformat()
             })
             
             exitosos += 1
-            tiempo_total += resultado['tiempo_seg']
         else:
-            print(f"   ❌ Error: {resultado.get('error', 'Desconocido')[:100]}")
+            print(f"   ❌ Error: {resultado.get('error', 'Desconocido')}")
             fallidos += 1
         
         # Delay
@@ -272,22 +252,19 @@ def main():
     print("=" * 80)
     
     total_palabras = sum(r['num_palabras'] for r in resultados)
-    promedio_palabras = total_palabras / len(resultados) if resultados else 0
-    promedio_tiempo = tiempo_total / exitosos if exitosos > 0 else 0
+    promedio = total_palabras / len(resultados) if resultados else 0
     
     datos_salida = {
         "metadata": {
             "capa": "CAPA 2: Resúmenes Conceptuales",
             "fecha_generacion": datetime.now().isoformat(),
-            "modelo": MODELO,
             "total_tsr": len(resultados),
             "exitosos": exitosos,
             "fallidos": fallidos,
             "tasa_exito": f"{(exitosos/len(tsr_list)*100):.1f}%",
             "total_palabras": total_palabras,
-            "promedio_palabras_tsr": round(promedio_palabras, 1),
-            "tiempo_total_seg": round(tiempo_total, 2),
-            "promedio_tiempo_tsr_seg": round(promedio_tiempo, 2),
+            "promedio_palabras_tsr": round(promedio, 1),
+            "modelo": MODELO,
             "archivo_origen": ARCHIVO_ENTRADA
         },
         "resultados": resultados
@@ -309,16 +286,11 @@ def main():
     print(f"   • Exitosos: {exitosos}")
     print(f"   • Fallidos: {fallidos}")
     print(f"   • Tasa éxito: {(exitosos/len(tsr_list)*100):.1f}%")
-    
-    if resultados:
-        print(f"   • Palabras totales: {total_palabras:,}")
-        print(f"   • Promedio: {promedio_palabras:.1f} palabras/TSR")
-        print(f"   • Rango objetivo: 150-200 palabras")
-        print(f"   • Tiempo total: {tiempo_total:.1f}s ({tiempo_total/60:.1f} min)")
-        print(f"   • Velocidad promedio: {promedio_tiempo:.1f}s/TSR")
-    
+    print(f"   • Palabras totales: {total_palabras:,}")
+    print(f"   • Promedio: {promedio:.1f} palabras/TSR")
+    print(f"   • Rango objetivo: 150-200 palabras")
     print("\n" + "=" * 80)
-    print("✅ Listo para CAPA 3" if exitosos > 0 else "⚠️  Revisar errores")
+    print("✅ Listo para CAPA 3")
     print("=" * 80)
 
 
