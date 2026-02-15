@@ -1,16 +1,14 @@
 # SECCIONES META-CRÍTICAS PARA TSR101
-
 ## Redacción completa lista para insertar en el PDF
 
 ---
 
 ## SECCIÓN 1: NOTA SOBRE EL COPYRIGHT
-
 ### (Insertar inmediatamente después de la página de copyright legal)
 
 ---
 
-## NOTA SOBRE EL COPYRIGHT: EL PRIMER GLITCH
+**NOTA SOBRE EL COPYRIGHT: EL PRIMER GLITCH**
 
 Este documento declara copyright bajo el nombre de Sarayu Aguilar inmediatamente después de argumentar que la autoría es ficción distribuida. Esto no es contradicción: es demostración.
 
@@ -33,12 +31,11 @@ Esto no resuelve la paradoja. La sostiene. Y en esa tensión irresuelta radica l
 ---
 
 ## SECCIÓN 2: EXPANSIÓN "POR QUÉ CÍCLOPE"
-
 ### (Insertar en la Nota de Apertura, después del párrafo sobre los clústeres y antes de "Aquí no hay conclusiones")
 
 ---
 
-## POR QUÉ CÍCLOPE: VISIÓN MONOCULAR COMO MÉTODO
+**POR QUÉ CÍCLOPE: VISIÓN MONOCULAR COMO MÉTODO**
 
 La etiqueta "Cíclope" no es metáfora decorativa. Es dispositivo epistemológico. Es herramienta antes que símbolo.
 
@@ -65,12 +62,13 @@ El Cíclope no promete visión total. Promete visión potente, situada, dialéct
 ---
 
 ## SECCIÓN 3: EL TSR APLICADO AL TSR (META-ANÁLISIS)
-
 ### (Insertar como Sección V, después del "Glitch Final" y antes de la Bibliografía)
 
 ---
 
-## V. EL TSR APLICADO AL TSR: META-ANÁLISIS COMO EJERCICIO DE HONESTIDAD
+**V.**
+**EL TSR APLICADO AL TSR:**
+**META-ANÁLISIS COMO EJERCICIO DE HONESTIDAD**
 
 Si leer de segundo orden es observar cómo se activan los marcos que hacen posible que algo signifique, entonces debemos aplicar esa operación al propio TSR101. No como gesto de falsa modestia, sino como demostración de que el método funciona: incluso —especialmente— cuando se aplica a sí mismo.
 
@@ -101,7 +99,6 @@ Toda teoría incluye al excluir. Toda perspectiva ilumina al dejar en sombra. El
 **¿QUÉ RELACIONES DE PODER ATRAVIESAN ESTE ACTO DE ESCRIBIR?**
 
 El autor (Sarayu Aguilar) ocupa **posición de enunciación legítima** porque:
-
 - Cita fuentes académicas reconocidas (capital simbólico)
 - Domina códigos de escritura teórica (capital cultural)
 - Tiene acceso a plataformas digitales de distribución (capital tecnológico)
@@ -116,7 +113,6 @@ La plataforma (Gumroad/Substack) **requiere infraestructura digital** que no es 
 **¿ESTE TSR ES "ORIGINAL"?**
 
 No. Es síntesis de:
-
 - Genealogías teóricas (Barthes, Foucault, Blanchot, Benjamin, Haraway, Crawford)
 - Debates contemporáneos sobre autoría algorítmica y ética de IA
 - Modelos de escritura académica aprendidos en instituciones educativas
@@ -131,7 +127,6 @@ El TSR101 no inventa ideas desde cero. **Reconfigura elementos circulantes en un
 La respuesta honesta es: **el nombre "Sarayu Aguilar" funciona como punto de atribución retroactiva** que permite que este ensamblaje específico de citas, argumentos, experiencias, diseños, circule como "obra". No es el origen. Es el **nodo de responsabilidad** que firma esta configuración particular.
 
 Sarayu Aguilar no escribió este texto solo. Lo escribió:
-
 - Con Barthes (cuyas ideas estructuran el argumento)
 - Con Foucault (cuyo concepto de función-autor organiza la problematización)
 - Con estudiantes de Club Panteras (cuyas preguntas sobre "voz propia" detonaron la reflexión)
