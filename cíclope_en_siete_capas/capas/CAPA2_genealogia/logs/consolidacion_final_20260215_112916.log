@@ -1,0 +1,35 @@
+2026-02-15 11:29:16,621 | INFO     | 🚀 Iniciando consolidación final de CAPA 2
+2026-02-15 11:29:16,621 | INFO     | 📚 Cargando metadatos...
+2026-02-15 11:29:16,621 | INFO     | 📄 Cargando JSON existente...
+2026-02-15 11:29:16,622 | INFO     | 🔍 Extrayendo mejores versiones de genealogías...
+2026-02-15 11:29:16,623 | INFO     | ✅ TSR 102: 526 palabras (buena)
+2026-02-15 11:29:16,624 | INFO     | ✅ TSR 103: 635 palabras (excelente)
+2026-02-15 11:29:16,625 | INFO     | ✅ TSR 104: 679 palabras (excelente)
+2026-02-15 11:29:16,626 | INFO     | ✅ TSR 105: 686 palabras (excelente)
+2026-02-15 11:29:16,628 | INFO     | ✅ TSR 106: 754 palabras (excelente)
+2026-02-15 11:29:16,629 | INFO     | ✅ TSR 107: 641 palabras (excelente)
+2026-02-15 11:29:16,630 | INFO     | ✅ TSR 108: 512 palabras (buena)
+2026-02-15 11:29:16,631 | INFO     | ✅ TSR 109: 888 palabras (excelente)
+2026-02-15 11:29:16,633 | INFO     | ✅ TSR 110: 668 palabras (excelente)
+2026-02-15 11:29:16,634 | INFO     | ✅ TSR 111: 1070 palabras (excelente)
+2026-02-15 11:29:16,636 | INFO     | ✅ TSR 112: 503 palabras (buena)
+2026-02-15 11:29:16,638 | INFO     | ✅ TSR 113: 644 palabras (excelente)
+2026-02-15 11:29:16,639 | INFO     | ✅ TSR 114: 662 palabras (excelente)
+2026-02-15 11:29:16,640 | INFO     | ✅ TSR 115: 762 palabras (excelente)
+2026-02-15 11:29:16,641 | INFO     | ✅ TSR 116: 694 palabras (excelente)
+2026-02-15 11:29:16,642 | INFO     | ✅ TSR 117: 575 palabras (buena)
+2026-02-15 11:29:16,643 | INFO     | ✅ TSR 118: 617 palabras (excelente)
+2026-02-15 11:29:16,644 | INFO     | ✅ TSR 119: 794 palabras (excelente)
+2026-02-15 11:29:16,645 | INFO     | ✅ TSR 120: 878 palabras (excelente)
+2026-02-15 11:29:16,645 | INFO     | 💾 Guardando JSON consolidado...
+2026-02-15 11:29:16,647 | INFO     | 📝 Generando MD consolidado...
+2026-02-15 11:29:16,648 | INFO     | 
+============================================================
+2026-02-15 11:29:16,649 | INFO     | 📊 ESTADÍSTICAS FINALES
+2026-02-15 11:29:16,649 | INFO     | ============================================================
+2026-02-15 11:29:16,649 | INFO     | ✅ TSRs procesados: 19
+2026-02-15 11:29:16,649 | INFO     | 📚 Total palabras: 13,188
+2026-02-15 11:29:16,649 | INFO     | 📈 Promedio por TSR: 694 palabras
+2026-02-15 11:29:16,649 | INFO     | 📁 JSON guardado: C:\Users\alien\Downloads\cíclope_mitologías_verbales\cíclope_en_siete_capas\capas\CAPA2_genealogia\TSR_CAPA2_FINAL_CONSOLIDADO.json
+2026-02-15 11:29:16,649 | INFO     | 📄 MD guardado: C:\Users\alien\Downloads\cíclope_mitologías_verbales\cíclope_en_siete_capas\capas\CAPA2_genealogia\TSR_CAPA2_FINAL_CONSOLIDADO.md
+2026-02-15 11:29:16,649 | INFO     | ============================================================

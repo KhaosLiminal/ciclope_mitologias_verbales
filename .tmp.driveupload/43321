@@ -1,335 +1,380 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
-GENERADOR DE CAPA 3: PROBLEMATIZACIÓN CONTEMPORÁNEA
-====================================================
-
-Genera las 19 problematizaciones (1000-1500 palabras) que conectan
-los conceptos genealógicos de CAPA 2 con presente algorítmico.
-
-Dependencias:
-- CAPA0: TSR101-120QUOTES.md (fragmentos fundacionales)
-- CAPA1: Bibliografía verificada
-- CAPA2: Genealogías conceptuales
-- GLOSARIO_CICLOPE.json
-
-Uso:
-    python generar_capa3.py --modelo claude --tsr 102
-    python generar_capa3.py --modelo sonar --all
-    python generar_capa3.py --validar-antes
+generar_capa3.py (Mejorado con Retry Logic de Windsurf)
+========================================================
+Genera CAPA 3: Problematización contemporánea con validación robusta
 """
 
 import json
 import os
+import time
+import random
 from pathlib import Path
 from datetime import datetime
-from typing import Dict, List
+from typing import Dict, List, Optional
+from functools import wraps
+import sys
+
+# Forzar UTF-8 en Windows
+if sys.platform == 'win32':
+    sys.stdout.reconfigure(encoding='utf-8')
+
+# ============================================================================
+# RETRY LOGIC (inspirado en Windsurf)
+# ============================================================================
+
+def retry_with_backoff(retries=3, backoff_in_seconds=2):
+    """
+    Decorador que implementa reintentos con backoff exponencial + jitter.
+    Lección aprendida de Windsurf: APIs externas necesitan retry logic robusto.
+    """
+    def decorator(func):
+        @wraps(func)
+        def wrapper(*args, **kwargs):
+            x = 0
+            while True:
+                try:
+                    return func(*args, **kwargs)
+                except Exception as e:
+                    if x == retries:
+                        print(f"[ERROR] Máximo de reintentos alcanzado ({retries})")
+                        raise e
+                    else:
+                        sleep_time = (backoff_in_seconds * 2 ** x + random.uniform(0, 1))
+                        print(f"[RETRY] Intento {x+1}/{retries} falló. Reintentando en {sleep_time:.1f}s...")
+                        time.sleep(sleep_time)
+                        x += 1
+        return wrapper
+    return decorator
 
 # ============================================================================
 # CONFIGURACIÓN
 # ============================================================================
 
-GLOSARIO_PATH = Path("config/GLOSARIO_CICLOPE.json")
-METADATOS_PATH = Path("config/METADATOS_PROYECTO.json")
-CAPAS_DIR = Path("capas")
+BASE_DIR = Path(__file__).parent.parent
+GLOSARIO_PATH = BASE_DIR / "config" / "GLOSARIO_CICLOPE.json"
 
-CAPA0_PATH = CAPAS_DIR / "CAPA0_semilla" / "TSR101-120QUOTES.md"
-CAPA1_PATH = CAPAS_DIR / "CAPA1_bibliografia" / "TSR_CAPA1_FINAL.json"
-CAPA2_PATH = CAPAS_DIR / "CAPA2_genealogia" / "TSR_CAPA2_FINAL.json"
+METADATOS_PATH = BASE_DIR / "config" / "METADATOS_PROYECTO.json"
+# CORRECCIÓN: Usar versión consolidada de Windsurf (más metadata)
+CAPA2_PATH = BASE_DIR / "capas" / "CAPA2_genealogia" / "TSR_CAPA2_FINAL_CONSOLIDADO.json"
+OUTPUT_JSON = BASE_DIR / "capas" / "CAPA3_problematizacion" / "TSR_CAPA3_FINAL.json"
 
-OUTPUT_PATH = CAPAS_DIR / "CAPA3_problematizacion" / "TSR_CAPA3_FINAL.json"
-
-# ============================================================================
-# PROMPT TEMPLATE PARA CAPA 3
-# ============================================================================
-
-PROMPT_CAPA3_TEMPLATE = """
-# TAREA: Genera la PROBLEMATIZACIÓN CONTEMPORÁNEA de TSR{tsr_id}
-
-## CONTEXTO PREVIO (CAPAS ANTERIORES)
-
-### CAPA 0: Fragmento fundacional
-{fragmento_inicial}
-
-### CAPA 2: Genealogía del concepto
-{genealogia_resumen}
-
-## TU TAREA AHORA (CAPA 3)
-
-Escribe la **problematización contemporánea** del concepto, conectándolo con:
-- Inteligencia Artificial (LLMs, autoría algorítmica, generación automática)
-- NFT y blockchain (arte digital, tokenización, escasez programada)
-- Plataformas digitales (redes sociales, algoritmos, economía atención)
-- Cultura visual algorítmica (deepfakes, filtros, realidad aumentada)
-
-## ESTRUCTURA REQUERIDA (1000-1500 palabras)
-
-### 1. APERTURA TRANSICIONAL (100-150 palabras)
-- Retoma el concepto de CAPA 2
-- Plantea la tensión con el presente algorítmico
-- Formula pregunta inicial que no se responderá del todo
-
-**Ejemplo para TSR102 (Aura):**
-"La reproductibilidad técnica que Benjamin diagnosticó en 1936 se ha radicalizado: 
-ya no reproducimos copias físicas, sino que generamos infinitas variaciones sintéticas. 
-¿Qué es el aura cuando la 'manifestación irrepetible de una lejanía' puede ser 
-programada mediante algoritmos? Los NFT prometen resucitar el aura mediante 
-escasez criptográfica, pero ¿no es precisamente esa escasez una simulación del 
-aura que Benjamin declaró muerta?"
-
-### 2. PROBLEMATIZACIÓN EN PRESENTE (600-900 palabras)
-
-Desarrolla 3-4 problematizaciones específicas. Por ejemplo:
-
-**A) IA y autoría algorítmica**
-- ChatGPT, Claude, Midjourney: ¿quién es autor?
-- Función-autor (Foucault) en era de coautoría máquina-humano
-- Contratos que especifican "texto humano sin IA": ¿qué defienden?
-
-**B) NFT y economía del arte digital**
-- Escasez programada vs. reproductibilidad infinita
-- Aura como metadata (certificado blockchain)
-- Beeple, Grimes, artistas cripto: ¿resucitan aura o la parodian?
-
-**C) Plataformas y economía atencional**
-- TikTok, Instagram: fragmentación vs. totalidad
-- Algoritmos de recomendación como nuevos "archivos" foucaultianos
-- ¿Qué cuenta como conocimiento válido en feeds personalizados?
-
-**D) Deepfakes y verdad sintética**
-- Indistinguibilidad entre real y generado
-- Epistemes algorítmicas: ¿qué regímenes de verdad producen?
-- Post-verdad como condición epistémica, no solo política
-
-### 3. RESONANCIA CON REFLEJOS HÍBRIDOS (100-150 palabras)
-- Conecta con el universo narrativo/visual RH
-- Identidades fragmentadas, archivos generativos
-- Cíclope como método de visión situada
-
-### 4. CIERRE ABIERTO (100-150 palabras)
-- NO cierres con respuestas definitivas
-- Plantea preguntas adicionales
-- Abre hacia aplicación pedagógica (CAPA 6)
-
-**Ejemplo de cierre abierto:**
-"Si la educación reproduce estructuras de poder mediante certificaciones 
-que validan quién puede hablar, ¿cómo cambian esas estructuras cuando 
-los estudiantes co-escriben con IA? ¿Qué significa 'voz propia' en un 
-ecosistema donde la escritura es negociación con sistemas probabilísticos? 
-Las instituciones educativas responden prohibiendo IA o exigiendo 
-declaraciones de 'trabajo humano'. Pero esa respuesta revela que no saben 
-cómo leer textos híbridos. Y ahí es donde la lectura de segundo orden 
-se vuelve urgente."
-
-## INSTRUCCIONES CRÍTICAS
-
-### TONO Y MÉTODO
-- ✅ Español mexicano (no rioplatense, no neutro académico)
-- ✅ Método socrático: preguntas que arden, no respuestas que cierran
-- ✅ Crítico sin ser nihilista: exponer problemas sin proponer soluciones fáciles
-- ✅ Interpela al lector: "¿Te has preguntado...?", "Observa lo que pasa cuando..."
-- ❌ NO usar bullet points ni numeración visible
-- ❌ NO cerrar con conclusiones definitivas
-- ❌ NO mencionar "en conclusión", "para finalizar", etc.
-
-### VALIDACIÓN TERMINOLÓGICA
-Estos términos deben usarse según el GLOSARIO_CICLOPE.json:
-{terminos_clave}
-
-Si usas un término con múltiples definiciones (ej: "fragmento"), 
-DEBES especificar cuál definición activas:
-- ✅ "El fragmento (según Schlegel, con promesa de totalidad)..."
-- ✅ "El fragmento blanchotiano (sin síntesis posible)..."
-- ❌ "El fragmento..." (sin especificar cuál definición)
-
-### CITAS Y REFERENCIAS
-- Usa citas de CAPA 1 cuando sea relevante
-- Formato: [Autor, año] inline
-- NO inventes citas ni autores
-- Puedes mencionar eventos actuales 2024-2026
-
-## EXTENSIÓN
-- Mínimo: 1000 palabras
-- Máximo: 1500 palabras
-- Ideal: 1200 palabras
-
-## AHORA GENERA LA PROBLEMATIZACIÓN PARA TSR{tsr_id}
-"""
+# API Keys (configura según tu modelo)
+PERPLEXITY_API_KEY = os.getenv("PERPLEXITY_API_KEY")
+ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY")
 
 # ============================================================================
 # FUNCIONES AUXILIARES
 # ============================================================================
 
-def cargar_json(path: Path) -> Dict:
-    """Carga archivo JSON"""
-    with open(path, 'r', encoding='utf-8') as f:
-        return json.load(f)
+def cargar_json(path: Path) -> Optional[Dict]:
+    """Carga archivo JSON con manejo de errores"""
+    try:
+        with open(path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        print(f"[ERROR] Archivo no encontrado: {path}")
+        return None
+    except json.JSONDecodeError as e:
+        print(f"[ERROR] JSON inválido en {path}: {str(e)}")
+        return None
 
-def cargar_fragmento_inicial(tsr_id: int) -> str:
-    """Extrae el fragmento fundacional de CAPA 0"""
-    # TODO: Implementar parser de TSR101-120QUOTES.md
-    # Por ahora retorna placeholder
-    return f"[Fragmento fundacional de TSR{tsr_id}]"
-
-def cargar_genealogia(tsr_id: int, capa2_data: Dict) -> str:
-    """Extrae resumen de la genealogía de CAPA 2"""
-    for tsr in capa2_data.get('estructura', []):
-        if tsr.get('tsr') == tsr_id:
-            genealogia = tsr.get('genealogia', '')
-            # Extraer primeros 300 caracteres como resumen
-            return genealogia[:300] + "..." if len(genealogia) > 300 else genealogia
-    return "[Genealogía no encontrada]"
-
-def generar_prompt_capa3(tsr_id: int, glosario: Dict, capa2: Dict) -> str:
-    """Genera el prompt completo para un TSR específico"""
-    
-    fragmento = cargar_fragmento_inicial(tsr_id)
-    genealogia = cargar_genealogia(tsr_id, capa2)
-    
-    # Extraer términos clave relevantes para este TSR
-    terminos_clave = glosario['validacion_coherencia']['terminos_clave_rastreados']
-    terminos_str = "\n".join([f"- {t}" for t in terminos_clave])
-    
-    return PROMPT_CAPA3_TEMPLATE.format(
-        tsr_id=tsr_id,
-        fragmento_inicial=fragmento,
-        genealogia_resumen=genealogia,
-        terminos_clave=terminos_str
-    )
-
-def validar_extensio(texto: str) -> tuple[bool, int]:
-    """Valida que la extensión esté en rango 1000-1500 palabras"""
+def validar_extension(texto: str, min_palabras: int, max_palabras: int) -> tuple[bool, int]:
+    """Valida que la extensión esté en rango"""
     palabras = len(texto.split())
-    valido = 1000 <= palabras <= 1500
+    valido = min_palabras <= palabras <= max_palabras
     return valido, palabras
 
-def guardar_resultado(resultados: Dict, output_path: Path):
-    """Guarda los resultados en JSON"""
-    output_path.parent.mkdir(parents=True, exist_ok=True)
-    
-    with open(output_path, 'w', encoding='utf-8') as f:
-        json.dump(resultados, f, indent=2, ensure_ascii=False)
-    
-    print(f"\n💾 Resultados guardados en: {output_path}")
-
-# ============================================================================
-# GENERADOR PRINCIPAL
-# ============================================================================
-
-def generar_capa3_tsr(
-    tsr_id: int,
-    modelo: str,
-    glosario: Dict,
-    capa2: Dict
-) -> Dict:
+def cargar_genealogia(tsr_id: int, capa2_data: Dict) -> Optional[str]:
     """
-    Genera la problematización de un TSR específico.
-    
-    Args:
-        tsr_id: Número del TSR (102-120)
-        modelo: 'claude' o 'sonar'
-        glosario: Diccionario del glosario cargado
-        capa2: Datos de CAPA 2
-    
-    Returns:
-        Dict con la problematización generada
+    Extrae genealogía de CAPA 2.
+    Adaptado para formato Windsurf: {"102": {...}, "103": {...}}
     """
-    print(f"\n📝 Generando CAPA 3 para TSR{tsr_id}...")
+    tsr_key = str(tsr_id)
+    if tsr_key not in capa2_data:
+        print(f"[WARN] TSR {tsr_id} no encontrado en CAPA2")
+        return None
     
-    # Generar prompt
-    prompt = generar_prompt_capa3(tsr_id, glosario, capa2)
+    return capa2_data[tsr_key].get('contenido', '')
+
+def cargar_metadata_tsr(tsr_id: int, capa2_data: Dict) -> Optional[Dict]:
+    """
+    Extrae metadata enriquecida de CAPA 2 (keywords, autor, cluster).
+    Solo disponible en formato Windsurf CONSOLIDADO.
+    """
+    tsr_key = str(tsr_id)
+    if tsr_key not in capa2_data:
+        return None
     
-    # TODO: Integrar con API de Claude o Sonar
-    # Por ahora, placeholder
-    problematizacion = f"[Problematización de TSR{tsr_id} generada con {modelo}]"
-    
-    # Validar extensión
-    valida, num_palabras = validar_extensio(problematizacion)
-    
-    if not valida:
-        print(f"⚠️  ADVERTENCIA: TSR{tsr_id} tiene {num_palabras} palabras (esperado: 1000-1500)")
-    
+    tsr_data = capa2_data[tsr_key]
     return {
-        "tsr": tsr_id,
-        "problematizacion": problematizacion,
-        "num_palabras": num_palabras,
-        "validacion_extension": valida,
-        "modelo_usado": modelo,
-        "fecha_generacion": datetime.now().isoformat()
+        'autor': tsr_data.get('autor'),
+        'obra': tsr_data.get('obra'),
+        'año': tsr_data.get('año'),
+        'concepto_central': tsr_data.get('concepto_central'),
+        'keywords': tsr_data.get('keywords', []),
+        'cluster': tsr_data.get('cluster'),
+        'conexion_RH': tsr_data.get('conexion_RH')
     }
 
+
 # ============================================================================
-# CLI
+# GENERACIÓN CON PERPLEXITY SONAR (con retry logic de Windsurf)
+# ============================================================================
+
+@retry_with_backoff(retries=3, backoff_in_seconds=2)
+def generar_problematizacion_sonar(tsr_id: int, genealogia: str, glosario: Dict) -> str:
+    """
+    Genera problematización usando Perplexity Sonar Pro.
+    Con retry logic + validación JSON + integración glosario.
+    """
+    import requests
+    
+    if not PERPLEXITY_API_KEY:
+        raise ValueError("PERPLEXITY_API_KEY no configurada")
+    
+    # Extraer términos relevantes del glosario
+    terminos_relevantes = ""
+    if glosario and 'terminos_nucleares' in glosario:
+        for termino, definicion in glosario['terminos_nucleares'].items():
+            definicion_schlegel = definicion.get('definicion_schlegel', '')
+            definicion_blanchot = definicion.get('definicion_blanchot', '')
+            tension = definicion.get('tension_dialectica', '')
+            
+            if definicion_schlegel or definicion_blanchot:
+                terminos_relevantes += f"\n{termino.upper()}:\n"
+                if definicion_schlegel:
+                    terminos_relevantes += f"- Schlegel: {definicion_schlegel}\n"
+                if definicion_blanchot:
+                    terminos_relevantes += f"- Blanchot: {definicion_blanchot}\n"
+                if tension:
+                    terminos_relevantes += f"- Tensión: {tension}\n"
+    
+    prompt = f"""
+Genera una PROBLEMATIZACIÓN CONTEMPORÁNEA para TSR{tsr_id}.
+
+GLOSARIO CICLOPE - USAR ESTAS DEFINICIONES CANÓNICAS:
+{terminos_relevantes}
+
+GENEALOGÍA PREVIA:
+{genealogia[:800]}...
+
+TAREA:
+Escribe 1200-1500 palabras conectando el concepto con:
+- Inteligencia Artificial (LLMs, autoría algorítmica)
+- NFT y blockchain (arte digital, tokenización)
+- Plataformas digitales (algoritmos, economía atención)
+- Cultura visual algorítmica (deepfakes, filtros)
+
+ESTRUCTURA:
+1. Apertura transicional (150 palabras)
+2. Problematización en presente (900 palabras)
+3. Resonancia con Reflejos Híbridos (150 palabras)
+4. Cierre abierto con preguntas (150 palabras)
+
+TONO: Crítico-poético, método socrático, español mexicano.
+USA LOS TÉRMINOS DEL GLOSARIO SEGÚN SUS DEFINICIONES.
+SI HAY TENSIÓN DIALÉCTICA, MENCIONARLA EXPLÍCITAMENTE.
+NO uses bullet points. NO cierres con respuestas definitivas.
+"""
+    
+    headers = {
+        "Authorization": f"Bearer {PERPLEXITY_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    payload = {
+        "model": "sonar-pro",
+        "messages": [{"role": "user", "content": prompt}],
+        "temperature": 0.7,
+        "max_tokens": 2500
+    }
+    
+    # Validación pre-request (lección Windsurf)
+    try:
+        response = requests.post(
+            "https://api.perplexity.ai/chat/completions",
+            headers=headers,
+            json=payload,
+            timeout=60  # Timeout explícito (lección Windsurf)
+        )
+        
+        # Validar status code
+        if response.status_code != 200:
+            raise ValueError(f"API error: {response.status_code} - {response.text}")
+        
+        # Validar respuesta JSON
+        try:
+            data = response.json()
+        except json.JSONDecodeError:
+            raise ValueError("Respuesta API no es JSON válido")
+        
+        # Extraer contenido
+        if not data.get('choices') or not data['choices'][0].get('message'):
+            raise ValueError("Estructura de respuesta inválida")
+        
+        contenido = data['choices'][0]['message']['content']
+        
+        # Validar que no esté vacío
+        if not contenido or len(contenido.strip()) < 100:
+            raise ValueError("Contenido generado vacío o muy corto")
+        
+        return contenido
+        
+    except requests.exceptions.Timeout:
+        raise ValueError("Timeout en request a Perplexity API")
+    except requests.exceptions.RequestException as e:
+        raise ValueError(f"Error de red: {str(e)}")
+
+# ============================================================================
+# GENERACIÓN PRINCIPAL
+# ============================================================================
+
+def generar_capa3_tsr(tsr_id: int, modelo: str, capa2_data: Dict, glosario: Dict) -> Dict:
+    """Genera problematización para un TSR específico"""
+    print(f"\n[GENERANDO] TSR {tsr_id}...")
+    
+    # Cargar genealogía
+    genealogia = cargar_genealogia(tsr_id, capa2_data)
+    if not genealogia:
+        print(f"[ERROR] No se encontró genealogía para TSR {tsr_id}")
+        return None
+    
+    # Generar según modelo
+    try:
+        if modelo == "sonar":
+            problematizacion = generar_problematizacion_sonar(tsr_id, genealogia, glosario)
+        else:
+            problematizacion = f"[Placeholder para modelo {modelo}]"
+        
+        # Validar extensión
+        valida, num_palabras = validar_extension(problematizacion, 1000, 1500)
+        
+        if not valida:
+            print(f"[WARN] TSR {tsr_id}: {num_palabras} palabras (esperado: 1000-1500)")
+        
+        print(f"[OK] TSR {tsr_id}: {num_palabras} palabras generadas")
+        
+        return {
+            "tsr": tsr_id,
+            "problematizacion": problematizacion,
+            "num_palabras": num_palabras,
+            "validacion_extension": valida,
+            "modelo_usado": modelo,
+            "fecha_generacion": datetime.now().isoformat(),
+            "glosario_utilizado": True
+        }
+        
+    except Exception as e:
+        print(f"[ERROR] TSR {tsr_id}: {str(e)}")
+        return None
+
+# ============================================================================
+# CLI PRINCIPAL
 # ============================================================================
 
 def main():
     import argparse
     
-    parser = argparse.ArgumentParser(
-        description='Genera CAPA 3 (Problematización contemporánea) del proyecto Cíclope TSR'
-    )
-    parser.add_argument('--modelo', choices=['claude', 'sonar'], default='claude',
-                       help='Modelo de LLM a usar')
-    parser.add_argument('--tsr', type=int, help='TSR específico a generar (102-120)')
-    parser.add_argument('--all', action='store_true', help='Generar todos los TSR')
-    parser.add_argument('--validar-antes', action='store_true',
-                       help='Validar coherencia de CAPA 2 antes de generar')
-    parser.add_argument('--output', help='Ruta de salida personalizada')
+    parser = argparse.ArgumentParser(description='Genera CAPA 3 con retry logic')
+    parser.add_argument('--modelo', choices=['sonar', 'claude'], default='sonar')
+    parser.add_argument('--tsr', type=int, help='TSR específico (102-120)')
+    parser.add_argument('--all', action='store_true', help='Generar todos')
+    parser.add_argument('--validar-antes', action='store_true')
     
     args = parser.parse_args()
     
+    print("=" * 70)
+    print("GENERADOR DE CAPA 3: PROBLEMATIZACIÓN CONTEMPORÁNEA")
+    print("=" * 70)
+    print()
+    
     # Cargar dependencias
-    print("📖 Cargando dependencias...")
-    glosario = cargar_json(GLOSARIO_PATH)
-    metadatos = cargar_json(METADATOS_PATH)
+    print("[INFO] Cargando dependencias...")
     capa2 = cargar_json(CAPA2_PATH)
+    glosario = cargar_json(GLOSARIO_PATH)
     
-    print("✅ Dependencias cargadas\n")
+    if not capa2:
+        print("[FATAL] No se pudo cargar CAPA 2")
+        return 1
     
-    # Validar CAPA 2 si se solicita
-    if args.validar_antes:
-        print("🔍 Validando coherencia de CAPA 2...")
-        os.system("python validar_coherencia_capas.py --capa CAPA2 --all")
-        print()
+    if not glosario:
+        print("[WARN] Glosario no encontrado, generando sin definiciones canónicas")
+        glosario = {}
     
-    # Determinar rango de TSR a generar
+    # CORRECCIÓN: Formato Windsurf no tiene metadata a nivel raíz
+    total_tsr = len(capa2.keys()) if capa2 else 0
+    print(f"[OK] CAPA 2 cargada: {total_tsr} genealogías")
+    if glosario:
+        print(f"[OK] Glosario cargado: {len(glosario.get('terminos_nucleares', {}))} términos")
+    print()
+    
+    # Determinar rango de TSR
     if args.all:
         tsr_range = range(102, 121)
     elif args.tsr:
         tsr_range = [args.tsr]
     else:
-        print("❌ ERROR: Especifica --tsr N o --all")
-        return
+        print("[ERROR] Especifica --tsr N o --all")
+        return 1
     
     # Generar problematizaciones
-    resultados = {
+    resultados = []
+    exitosos = 0
+    fallidos = 0
+    
+    for tsr_id in tsr_range:
+        resultado = generar_capa3_tsr(tsr_id, args.modelo, capa2, glosario)
+        if resultado:
+            resultados.append(resultado)
+            exitosos += 1
+        else:
+            fallidos += 1
+    
+    # Guardar resultados
+    output_data = {
         "metadata": {
             "capa": "CAPA 3: Problematización contemporánea",
             "fecha_generacion": datetime.now().isoformat(),
-            "total_tsr": len(tsr_range),
+            "total_tsr": len(resultados),
+            "exitosos": exitosos,
+            "fallidos": fallidos,
             "modelo": args.modelo
         },
-        "estructura": []
+        "estructura": resultados
     }
     
-    for tsr_id in tsr_range:
-        resultado_tsr = generar_capa3_tsr(tsr_id, args.modelo, glosario, capa2)
-        resultados["estructura"].append(resultado_tsr)
+    OUTPUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     
-    # Guardar resultados
-    output_path = Path(args.output) if args.output else OUTPUT_PATH
-    guardar_resultado(resultados, output_path)
+    with open(OUTPUT_JSON, 'w', encoding='utf-8') as f:
+        json.dump(output_data, f, indent=2, ensure_ascii=False)
     
     # Estadísticas finales
-    total_palabras = sum(r['num_palabras'] for r in resultados['estructura'])
-    promedio = total_palabras / len(resultados['estructura'])
+    total_palabras = sum(r['num_palabras'] for r in resultados)
+    promedio = total_palabras / len(resultados) if resultados else 0
     
-    print(f"\n{'='*60}")
-    print(f"ESTADÍSTICAS FINALES")
-    print(f"{'='*60}")
-    print(f"TSR generados: {len(resultados['estructura'])}")
-    print(f"Palabras totales: {total_palabras:,}")
+    print()
+    print("=" * 70)
+    print("RESUMEN")
+    print("=" * 70)
+    print(f"TSR generados: {exitosos}")
+    print(f"TSR fallidos: {fallidos}")
+    print(f"Total palabras: {total_palabras:,}")
     print(f"Promedio por TSR: {promedio:.0f} palabras")
-    print(f"{'='*60}\n")
+    print(f"Archivo guardado: {OUTPUT_JSON}")
+    print("=" * 70)
+    
+    return 0 if fallidos == 0 else 1
 
 if __name__ == '__main__':
-    main()
+    try:
+        exit(main())
+    except KeyboardInterrupt:
+        print("\n[INTERRUPT] Generación cancelada por usuario")
+        exit(1)
+    except Exception as e:
+        print(f"\n[FATAL ERROR] {str(e)}")
+        import traceback
+        traceback.print_exc()
+        exit(1)

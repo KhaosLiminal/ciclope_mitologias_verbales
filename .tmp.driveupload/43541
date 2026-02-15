@@ -1,13 +1,1 @@
-
-# Please enter the commit message for your changes. Lines starting
-# with '#' will be ignored, and an empty message aborts the commit.
-#
-# On branch TSR_CICLOPE
-# Your branch is up to date with 'origin/TSR_CICLOPE'.
-#
-# Changes to be committed:
-#	new file:   "c\303\255clope_en_siete_capas/.ssh_config_template"
-#	new file:   "c\303\255clope_en_siete_capas/.vscode/settings.json"
-#	renamed:    "c\303\255clope_en_siete_capas/tests/test_api.py" -> "c\303\255clope_en_siete_capas/tests/api_test.py"
-#	renamed:    "c\303\255clope_en_siete_capas/tests/test_perplexity.py" -> "c\303\255clope_en_siete_capas/tests/perplexity_test.py"
-#
+Sincronización desde Windsurf
