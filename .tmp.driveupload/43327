@@ -23,9 +23,10 @@ from collections import defaultdict
 # CONFIGURACIÓN
 # ============================================================================
 
-GLOSARIO_PATH = Path("config/GLOSARIO_CICLOPE.json")
-METADATOS_PATH = Path("config/METADATOS_PROYECTO.json")
-CAPAS_DIR = Path("capas")
+BASE_DIR = Path(__file__).parent.parent
+GLOSARIO_PATH = BASE_DIR / "config" / "GLOSARIO_CICLOPE.json"
+METADATOS_PATH = BASE_DIR / "config" / "METADATOS_PROYECTO.json"
+CAPAS_DIR = BASE_DIR / "capas"
 
 # ============================================================================
 # ESTRUCTURAS DE DATOS
@@ -69,7 +70,18 @@ def cargar_metadatos() -> Dict:
 
 def cargar_capa(capa_nombre: str) -> Dict:
     """Carga datos de una capa específica"""
-    capa_path = CAPAS_DIR / f"{capa_nombre}" / f"TSR_{capa_nombre}_FINAL.json"
+    # Mapeo de nombres de capas a directorios reales
+    capa_directorios = {
+        "CAPA2": "CAPA2_genealogia",
+        "CAPA3": "CAPA3_problematizacion",
+        "CAPA4": "CAPA4_resonancias",
+        "CAPA5": "CAPA5_metanalisis",
+        "CAPA6": "CAPA6_talleres",
+        "CAPA7": "CAPA7_casos"
+    }
+    
+    directorio = capa_directorios.get(capa_nombre, capa_nombre)
+    capa_path = CAPAS_DIR / directorio / f"TSR_{capa_nombre}_FINAL.json"
     
     if not capa_path.exists():
         print(f"⚠️  CAPA {capa_nombre} no existe todavía: {capa_path}")
