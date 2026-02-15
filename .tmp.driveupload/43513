@@ -1,0 +1,85 @@
+2026-02-14 01:13:33,865 | INFO     | ================================================================================
+2026-02-14 01:13:33,865 | INFO     | INICIANDO GENERACIÓN DE GENEALOGÍAS (MODO BATCH)
+2026-02-14 01:13:33,865 | INFO     | ================================================================================
+2026-02-14 01:13:33,867 | INFO     | OK: 19 TSRs cargados (102-120)
+2026-02-14 01:13:33,867 | INFO     | Procesando 4 lotes de 5 genealogías cada uno
+2026-02-14 01:13:33,867 | INFO     | 
+LOTE 1/4: TSRs 102-106
+2026-02-14 01:13:33,867 | INFO     |   Tokens input: 318, output: 8000
+2026-02-14 01:13:33,868 | INFO     | INTENTO 1/3
+2026-02-14 01:13:47,442 | INFO     | OK: 7818 caracteres, 15 citations
+2026-02-14 01:13:47,444 | INFO     | Lote 1: 5 genealogías procesadas
+2026-02-14 01:13:47,444 | INFO     | TSR102: 516 palabras OK
+2026-02-14 01:13:47,444 | WARNING  | TSR103: 260 palabras (menos de 500)
+2026-02-14 01:13:47,444 | WARNING  | TSR104: 106 palabras (menos de 500)
+2026-02-14 01:13:47,444 | WARNING  | TSR105: 55 palabras (menos de 500)
+2026-02-14 01:13:47,444 | WARNING  | TSR106: 52 palabras (menos de 500)
+2026-02-14 01:13:47,444 | INFO     | Lote 1 completado: 5 genealogías
+2026-02-14 01:13:47,445 | INFO     | Pausa 10 segundos antes del siguiente lote...
+2026-02-14 01:13:57,445 | INFO     | 
+LOTE 2/4: TSRs 107-111
+2026-02-14 01:13:57,445 | INFO     |   Tokens input: 314, output: 8000
+2026-02-14 01:13:57,446 | INFO     | INTENTO 1/3
+2026-02-14 01:14:45,941 | INFO     | OK: 16682 caracteres, 1 citations
+2026-02-14 01:14:45,942 | INFO     | Lote 2: 5 genealogías procesadas
+2026-02-14 01:14:45,943 | INFO     | TSR107: 629 palabras OK
+2026-02-14 01:14:45,943 | INFO     | TSR108: 503 palabras OK
+2026-02-14 01:14:45,943 | WARNING  | TSR109: 434 palabras (menos de 500)
+2026-02-14 01:14:45,943 | WARNING  | TSR110: 368 palabras (menos de 500)
+2026-02-14 01:14:45,943 | WARNING  | TSR111: 254 palabras (menos de 500)
+2026-02-14 01:14:45,943 | INFO     | Lote 2 completado: 5 genealogías
+2026-02-14 01:14:45,943 | INFO     | Pausa 10 segundos antes del siguiente lote...
+2026-02-14 01:14:55,944 | INFO     | 
+LOTE 3/4: TSRs 112-116
+2026-02-14 01:14:55,944 | INFO     |   Tokens input: 315, output: 8000
+2026-02-14 01:14:55,944 | INFO     | INTENTO 1/3
+2026-02-14 01:15:12,167 | INFO     | OK: 8520 caracteres, 15 citations
+2026-02-14 01:15:12,169 | INFO     | Lote 3: 5 genealogías procesadas
+2026-02-14 01:15:12,169 | WARNING  | TSR112: 493 palabras (menos de 500)
+2026-02-14 01:15:12,169 | WARNING  | TSR113: 224 palabras (menos de 500)
+2026-02-14 01:15:12,169 | WARNING  | TSR114: 129 palabras (menos de 500)
+2026-02-14 01:15:12,169 | WARNING  | TSR115: 99 palabras (menos de 500)
+2026-02-14 01:15:12,169 | WARNING  | TSR116: 78 palabras (menos de 500)
+2026-02-14 01:15:12,169 | INFO     | Lote 3 completado: 5 genealogías
+2026-02-14 01:15:12,170 | INFO     | Pausa 10 segundos antes del siguiente lote...
+2026-02-14 01:15:22,170 | INFO     | 
+LOTE 4/4: TSRs 117-120
+2026-02-14 01:15:22,171 | INFO     |   Tokens input: 301, output: 8000
+2026-02-14 01:15:22,171 | INFO     | INTENTO 1/3
+2026-02-14 01:15:46,779 | INFO     | OK: 11120 caracteres, 15 citations
+2026-02-14 01:15:46,781 | INFO     | Lote 4: 4 genealogías procesadas
+2026-02-14 01:15:46,781 | INFO     | TSR117: 564 palabras OK
+2026-02-14 01:15:46,781 | WARNING  | TSR118: 390 palabras (menos de 500)
+2026-02-14 01:15:46,781 | WARNING  | TSR119: 259 palabras (menos de 500)
+2026-02-14 01:15:46,782 | WARNING  | TSR120: 103 palabras (menos de 500)
+2026-02-14 01:15:46,782 | INFO     | Lote 4 completado: 4 genealogías
+2026-02-14 01:15:46,782 | INFO     | Guardando 19 genealogías...
+2026-02-14 01:15:46,783 | INFO     | Guardado: TSR102
+2026-02-14 01:15:46,783 | INFO     | Guardado: TSR103
+2026-02-14 01:15:46,784 | INFO     | Guardado: TSR104
+2026-02-14 01:15:46,785 | INFO     | Guardado: TSR105
+2026-02-14 01:15:46,786 | INFO     | Guardado: TSR106
+2026-02-14 01:15:46,786 | INFO     | Guardado: TSR107
+2026-02-14 01:15:46,787 | INFO     | Guardado: TSR108
+2026-02-14 01:15:46,787 | INFO     | Guardado: TSR109
+2026-02-14 01:15:46,788 | INFO     | Guardado: TSR110
+2026-02-14 01:15:46,788 | INFO     | Guardado: TSR111
+2026-02-14 01:15:46,789 | INFO     | Guardado: TSR112
+2026-02-14 01:15:46,789 | INFO     | Guardado: TSR113
+2026-02-14 01:15:46,790 | INFO     | Guardado: TSR114
+2026-02-14 01:15:46,790 | INFO     | Guardado: TSR115
+2026-02-14 01:15:46,790 | INFO     | Guardado: TSR116
+2026-02-14 01:15:46,791 | INFO     | Guardado: TSR117
+2026-02-14 01:15:46,791 | INFO     | Guardado: TSR118
+2026-02-14 01:15:46,792 | INFO     | Guardado: TSR119
+2026-02-14 01:15:46,793 | INFO     | Guardado: TSR120
+2026-02-14 01:15:46,793 | INFO     | 
+================================================================================
+2026-02-14 01:15:46,793 | INFO     | PROCESO COMPLETADO
+2026-02-14 01:15:46,793 | INFO     | ================================================================================
+2026-02-14 01:15:46,793 | INFO     | Lotes exitosos: 4/4
+2026-02-14 01:15:46,794 | INFO     | Genealogías totales: 19
+2026-02-14 01:15:46,794 | INFO     | Palabras totales: 5,516
+2026-02-14 01:15:46,794 | INFO     | Promedio palabras: 290.3
+2026-02-14 01:15:46,794 | INFO     | Tiempo total: 132.93s
+2026-02-14 01:15:46,794 | INFO     | ================================================================================

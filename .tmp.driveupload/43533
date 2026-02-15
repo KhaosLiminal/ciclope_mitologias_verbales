@@ -1,0 +1,16 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = false
+	logallrefupdates = true
+	symlinks = false
+	ignorecase = true
+[lfs]
+	repositoryformatversion = 0
+[remote "origin"]
+	url = https://github.com/KhaosLiminal/ciclope_mitologias_verbales
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "TSR_CICLOPE"]
+	vscode-merge-base = origin/main
+	remote = origin
+	merge = refs/heads/TSR_CICLOPE

@@ -1,0 +1,82 @@
+2026-02-14 01:05:27,889 | INFO     | ================================================================================
+2026-02-14 01:05:27,890 | INFO     | INICIANDO GENERACIÓN DE GENEALOGÍAS (v3 MEJORADA)
+2026-02-14 01:05:27,890 | INFO     | ================================================================================
+2026-02-14 01:05:27,890 | INFO     | 
+Cargando metadatos...
+2026-02-14 01:05:27,892 | INFO     | OK: 19 TSRs cargados (102-120)
+2026-02-14 01:05:27,892 | INFO     | 
+Generando megaprompt...
+2026-02-14 01:05:27,892 | INFO     | FASE 1: GENERACIÓN DE MEGAPROMPT
+2026-02-14 01:05:27,892 | INFO     |   Prompt size: 1769 caracteres, ~590 tokens
+2026-02-14 01:05:27,892 | INFO     | 
+Enviando a Sonar...
+2026-02-14 01:05:27,893 | INFO     | FASE 2: LLAMADA A SONAR API (v3 - MEJORADA)
+2026-02-14 01:05:27,893 | INFO     |   Tokens estimados (input): 590
+2026-02-14 01:05:27,893 | INFO     |   Tokens máximos (output): 20000
+2026-02-14 01:05:27,893 | INFO     |   max_tokens: 20000 (ajustado dinámicamente)
+2026-02-14 01:05:27,893 | INFO     |   search_mode: academic
+2026-02-14 01:05:27,893 | INFO     |   response_format: no soportado (usando prompt)
+2026-02-14 01:05:27,893 | INFO     | INTENTO 1/3
+2026-02-14 01:05:27,895 | DEBUG    | Starting new HTTPS connection (1): api.perplexity.ai:443
+2026-02-14 01:05:52,394 | DEBUG    | https://api.perplexity.ai:443 "POST /chat/completions HTTP/1.1" 200 None
+2026-02-14 01:05:52,396 | INFO     |   Status: 200 | Tiempo: 24.50s
+2026-02-14 01:05:52,396 | INFO     | OK HTTP 200 OK
+2026-02-14 01:05:52,397 | INFO     | OK Respuesta guardada
+2026-02-14 01:05:52,397 | INFO     | OK Contenido: 13534 caracteres
+2026-02-14 01:05:52,397 | INFO     | OK Citations académicas: 15
+2026-02-14 01:05:52,398 | INFO     | OK Search results: 15
+2026-02-14 01:05:52,398 | INFO     | OK Citations guardadas
+2026-02-14 01:05:52,399 | INFO     | 
+Validando respuesta...
+2026-02-14 01:05:52,400 | INFO     | FASE 3: VALIDACIÓN DE RESPUESTA
+2026-02-14 01:05:52,400 | DEBUG    | Limpiando JSON...
+2026-02-14 01:05:52,402 | INFO     | OK JSON válido
+2026-02-14 01:05:52,402 | INFO     | OK Estructura correcta
+2026-02-14 01:05:52,403 | INFO     | OK Cantidad: 19 genealogías
+2026-02-14 01:05:52,403 | WARNING  | ADVERTENCIA 0/19 en rango correcto
+2026-02-14 01:05:52,403 | WARNING  | ADVERTENCIA 19 problemas detectados
+2026-02-14 01:05:52,403 | WARNING  | ADVERTENCIA Validación parcial, continuando...
+2026-02-14 01:05:52,404 | INFO     | Respuesta problemática guardada en 'error_response.txt'
+2026-02-14 01:05:52,404 | INFO     | 
+Guardando resultados...
+2026-02-14 01:05:52,404 | INFO     | FASE 4: PROCESAMIENTO Y GUARDADO
+2026-02-14 01:05:52,405 | DEBUG    | Limpiando JSON...
+2026-02-14 01:05:52,406 | INFO     | OK TSR102: 410 palabras
+2026-02-14 01:05:52,407 | INFO     | OK TSR103: 281 palabras
+2026-02-14 01:05:52,408 | INFO     | OK TSR104: 189 palabras
+2026-02-14 01:05:52,409 | INFO     | OK TSR105: 117 palabras
+2026-02-14 01:05:52,409 | INFO     | OK TSR106: 65 palabras
+2026-02-14 01:05:52,410 | INFO     | OK TSR107: 52 palabras
+2026-02-14 01:05:52,411 | INFO     | OK TSR108: 34 palabras
+2026-02-14 01:05:52,411 | INFO     | OK TSR109: 34 palabras
+2026-02-14 01:05:52,411 | INFO     | OK TSR110: 27 palabras
+2026-02-14 01:05:52,412 | INFO     | OK TSR111: 28 palabras
+2026-02-14 01:05:52,412 | INFO     | OK TSR112: 29 palabras
+2026-02-14 01:05:52,413 | INFO     | OK TSR113: 25 palabras
+2026-02-14 01:05:52,413 | INFO     | OK TSR114: 34 palabras
+2026-02-14 01:05:52,414 | INFO     | OK TSR115: 25 palabras
+2026-02-14 01:05:52,414 | INFO     | OK TSR116: 23 palabras
+2026-02-14 01:05:52,415 | INFO     | OK TSR117: 28 palabras
+2026-02-14 01:05:52,415 | INFO     | OK TSR118: 28 palabras
+2026-02-14 01:05:52,416 | INFO     | OK TSR119: 29 palabras
+2026-02-14 01:05:52,416 | INFO     | OK TSR120: 27 palabras
+2026-02-14 01:05:52,417 | INFO     | Metricas guardadas: 1 ejecuciones registradas
+2026-02-14 01:05:52,417 | INFO     | 
+================================================================================
+2026-02-14 01:05:52,417 | INFO     | PROCESO COMPLETADO
+2026-02-14 01:05:52,417 | INFO     | ================================================================================
+2026-02-14 01:05:52,417 | INFO     | Genealogías procesadas: 19/19
+2026-02-14 01:05:52,417 | INFO     | Palabras totales: 1,485
+2026-02-14 01:05:52,418 | INFO     | Promedio palabras/genealogía: 78
+2026-02-14 01:05:52,418 | INFO     | Tiempo total: 24.53s
+2026-02-14 01:05:52,418 | INFO     | Citaciones académicas: 15
+2026-02-14 01:05:52,418 | INFO     | Resultados de búsqueda: 15
+2026-02-14 01:05:52,418 | WARNING  | ADVERTENCIA Problemas detectados: 19
+2026-02-14 01:05:52,418 | WARNING  |    - TSR102: 410 palabras
+2026-02-14 01:05:52,418 | WARNING  |    - TSR103: 281 palabras
+2026-02-14 01:05:52,418 | WARNING  |    - TSR104: 189 palabras
+2026-02-14 01:05:52,418 | WARNING  |    - TSR105: 117 palabras
+2026-02-14 01:05:52,418 | WARNING  |    - TSR106: 65 palabras
+2026-02-14 01:05:52,419 | INFO     | 
+PROCESO PARCIAL
+2026-02-14 01:05:52,419 | INFO     | ================================================================================
