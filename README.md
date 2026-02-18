@@ -1,107 +1,29 @@
-# 🚀 Generador de Bibliografía Académica - Capa 1
+# ciclope_mitologias_verbales
+**¿Por qué Cíclope?**
 
-Este proyecto automatiza la generación de bibliografías académicas verificadas para Trabajos de Síntesis de Referencia (TSR) utilizando la API de Perplexity.
+La etiqueta "Cíclope" no es metáfora decorativa. Es dispositivo epistemológico.
+El Cíclope mitológico ve con un solo ojo, pero ve potentemente. Cada TSR de esta serie (TSR101–TSR120) es una **mirada monocular deliberada**: un ángulo situado, declaradamente parcial, pero riguroso. No pretendemos la visión total del académico omnisciente que ve "objetivamente". Asumimos la **parcialidad como método**.
 
-## 📋 Requisitos
+Veinte TSR = veinte ojos de TSR100: Cíclope. Veinte perspectivas que no suman una totalidad, sino que **mapean un campo de tensiones**. Ninguna teoría es universal. Ninguna mirada es inocente. Cada TSR declara desde dónde mira y qué queda fuera de su campo visual.
 
-- Python 3.8+
-- API Key de Perplexity
-- Dependencias listadas en [requirements.txt](cci:7://file:///c:/Users/alien/Downloads/c%C3%ADclope/c%C3%ADclope%20en%20siete%20capas/requirements.txt:0:0-0:0)
+El rostro fragmentado de portada es una evocación de un clúster visual que ejecuta esta lógica: la identidad autoral descompuesta en serie, fragmentada en rectángulos, reproducible manualmente, numerada como edición limitada que es infinitamente copiable. **La fragmentación no es falla: es estructura.**
 
-## 🛠️ Instalación
+Si buscas una teoría unificada de la lectura, este no es tu proyecto. Si buscas herramientas para sostener la tensión entre marcos incompatibles, bienvenido al Cíclope.
 
-1. Clona el repositorio:
+Roland Barthes no propuso la “muerte del autor” como una provocación estética, sino como un desplazamiento ético: liberar al texto de la tiranía de la intención. Matar al autor no es un gesto nihilista; es un acto de misericordia hacia el lector. Allí donde la voz autoral se retira, aparece un espacio común: un campo de fuerzas donde múltiples escrituras dialogan sin jerarquía final.
 
-   ```bash
-   git clone [URL_DEL_REPOSITORIO]
-   cd [NOMBRE_DEL_REPOSITORIO]
-   ```
+Este TSR parte de esa herida abierta y la trae al presente. Hoy no escribimos solos. Escribimos con máquinas, con archivos, con modelos, con tradiciones que ya no se distinguen claramente de los sistemas que las procesan. La pregunta ya no es quién escribió esto, sino qué régimen de lectura estamos activando cuando leemos.
 
-2. Crea un entorno virtual (recomendado):
+Si enseñas, curas, medias lectura o gestionas proyectos culturales, este texto te exige preguntar: ¿quién garantiza el sentido cuando tus estudiantes escriben con IA? ¿Cómo evaluar autoría cuando el 40% de un ensayo fue generado sin declaración? ¿Qué significa "voz propia" en un ecosistema donde la escritura es negociación con sistemas probabilísticos?
 
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # En Windows: venv\Scripts\activate
-   ```
+Reflejos Híbridos no propone respuestas, sino herramientas para sostener la pregunta. Leer de segundo orden no es interpretar mejor, sino observar cómo se activan los marcos que hacen posible que algo signifique. En docencia: leer las consignas que estructuran las tareas. En mediación: leer los dispositivos que regulan qué libros circulan y bajo qué legitimidad. En gestión cultural: leer las economías simbólicas que determinan qué proyectos reciben financiamiento.
 
-3. Instala las dependencias:
+El clúster que abre este TSR funciona como umbral. No ilustra el contenido: lo condensa. Es una imagen reproducible a mano porque el problema no es la técnica, sino la autoridad que le atribuimos. La reproducción no degrada el pensamiento; lo obliga a circular fuera de los circuitos académicos tradicionales.
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+Este ciclo (TSR101–TSR120) recorrerá fragmentos, pigmentos, mercados, escrituras antiguas, teorías del signo, pedagogías del aprendizaje y crisis del aura. No como historia lineal, sino como constelación. Cada TSR es autónomo y, al mismo tiempo, incompleto.
 
-4. Configura tu API key:
+Aquí no hay conclusiones.
+Hay desplazamientos.
 
-   ```bash
-   # En Windows
-   setx PERPLEXITY_API_KEY "tu_api_key_aquí"
-   
-   # En Linux/Mac
-   export PERPLEXITY_API_KEY="tu_api_key_aquí"
-   ```
-
-## 🚀 Uso
-
-1. Prepara tu archivo de metadatos en `datos/tsr_metadatos.json`
-2. Ejecuta el script principal:
-
-   ```bash
-   python scripts/ejecutar_capa1.py
-   ```
-
-3. Los resultados se guardarán en la carpeta `resultados/`
-
-## 📁 Estructura del Proyecto
-
-```bash
-.
-├── datos/                    # Datos de entrada
-│   └── tsr_metadatos.json    # Metadatos de los TSRs
-├── resultados/               # Resultados de la ejecución
-│   ├── debug/                # Archivos de depuración
-│   └── resultados_*.json     # Resultados parciales y finales
-├── scripts/                  # Scripts ejecutables
-│   ├── ejecutar_capa1.py     # Script principal
-│   └── TSR_CAPA1_Reintentos.py # Script de reintentos
-├── src/                      # Código fuente
-│   ├── __init__.py
-│   ├── api_client.py         # Cliente de la API
-│   ├── config.py             # Configuración
-│   ├── models.py             # Modelos de datos
-│   ├── validators.py         # Validadores
-│   └── utils.py              # Utilidades
-└── tests/                    # Pruebas unitarias
-    └── test_validators.py
-```
-
-## ⚙️ Configuración
-
-Puedes modificar los parámetros en `src/config.py`:
-
-- MAX_REINTENTOS: Número máximo de reintentos por TSR
-- DELAY_INICIAL: Tiempo de espera inicial entre reintentos (segundos)
-- FACTOR_BACKOFF: Factor de multiplicación para el backoff exponencial
-- MAX_DELAY: Tiempo máximo de espera entre reintentos (segundos)
-
-## 📊 Estadísticas
-
-El sistema genera automáticamente estadísticas de ejecución, incluyendo:
-
-- Número de TSRs procesados
-- Tasa de éxito
-- Tiempo de ejecución
-- Número de fuentes generadas
-
-## 🐛 Depuración
-
-Los archivos de depuración se guardan en `resultados/debug/` e incluyen:
-
-- Respuestas crudas de la API
-- Errores de validación
-- Trazas de ejecución
-
-## 📄 Licencia
-
-Este proyecto está bajo la Licencia MIT. Ver el archivo LICENSE para más detalles.
-
-Desarrollado por Nigel_Moonwriter | <reflejoshibridos@gmail.com>
+Leer este texto no garantiza comprensión.
+Pero sí exige responsabilidad: nadie leerá por ti.
