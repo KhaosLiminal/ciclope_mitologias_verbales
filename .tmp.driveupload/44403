@@ -1,6 +1,0 @@
-{
-    "Lingma.DisplayLanguage": "English",
-    "Lingma.PreferredLanguage for AI Chat": "English",
-    "Lingma.PreferredLanguage forCommitMessage": "English",
-    "gitlens.ai.largePromptWarningThreshold": 500000
-}
