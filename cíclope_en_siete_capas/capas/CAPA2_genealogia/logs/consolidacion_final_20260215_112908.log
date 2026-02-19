@@ -1,0 +1,35 @@
+2026-02-15 11:29:08,936 | INFO     | 🚀 Iniciando consolidación final de CAPA 2
+2026-02-15 11:29:08,937 | INFO     | 📚 Cargando metadatos...
+2026-02-15 11:29:08,937 | INFO     | 📄 Cargando JSON existente...
+2026-02-15 11:29:08,938 | INFO     | 🔍 Extrayendo mejores versiones de genealogías...
+2026-02-15 11:29:08,939 | WARNING  | ⚠️ TSR 102: No se encontró versión
+2026-02-15 11:29:08,940 | WARNING  | ⚠️ TSR 103: No se encontró versión
+2026-02-15 11:29:08,940 | WARNING  | ⚠️ TSR 104: No se encontró versión
+2026-02-15 11:29:08,940 | WARNING  | ⚠️ TSR 105: No se encontró versión
+2026-02-15 11:29:08,941 | WARNING  | ⚠️ TSR 106: No se encontró versión
+2026-02-15 11:29:08,942 | WARNING  | ⚠️ TSR 107: No se encontró versión
+2026-02-15 11:29:08,942 | WARNING  | ⚠️ TSR 108: No se encontró versión
+2026-02-15 11:29:08,942 | WARNING  | ⚠️ TSR 109: No se encontró versión
+2026-02-15 11:29:08,943 | WARNING  | ⚠️ TSR 110: No se encontró versión
+2026-02-15 11:29:08,943 | WARNING  | ⚠️ TSR 111: No se encontró versión
+2026-02-15 11:29:08,944 | WARNING  | ⚠️ TSR 112: No se encontró versión
+2026-02-15 11:29:08,944 | WARNING  | ⚠️ TSR 113: No se encontró versión
+2026-02-15 11:29:08,944 | WARNING  | ⚠️ TSR 114: No se encontró versión
+2026-02-15 11:29:08,945 | WARNING  | ⚠️ TSR 115: No se encontró versión
+2026-02-15 11:29:08,945 | WARNING  | ⚠️ TSR 116: No se encontró versión
+2026-02-15 11:29:08,946 | WARNING  | ⚠️ TSR 117: No se encontró versión
+2026-02-15 11:29:08,947 | WARNING  | ⚠️ TSR 118: No se encontró versión
+2026-02-15 11:29:08,947 | WARNING  | ⚠️ TSR 119: No se encontró versión
+2026-02-15 11:29:08,948 | WARNING  | ⚠️ TSR 120: No se encontró versión
+2026-02-15 11:29:08,948 | INFO     | 💾 Guardando JSON consolidado...
+2026-02-15 11:29:08,949 | INFO     | 📝 Generando MD consolidado...
+2026-02-15 11:29:08,950 | INFO     | 
+============================================================
+2026-02-15 11:29:08,950 | INFO     | 📊 ESTADÍSTICAS FINALES
+2026-02-15 11:29:08,950 | INFO     | ============================================================
+2026-02-15 11:29:08,950 | INFO     | ✅ TSRs procesados: 0
+2026-02-15 11:29:08,950 | INFO     | 📚 Total palabras: 0
+2026-02-15 11:29:08,950 | INFO     | 📈 Promedio por TSR: 0 palabras
+2026-02-15 11:29:08,950 | INFO     | 📁 JSON guardado: C:\Users\alien\Downloads\cíclope_mitologías_verbales\cíclope_en_siete_capas\capas\CAPA2_genealogia\TSR_CAPA2_FINAL_CONSOLIDADO.json
+2026-02-15 11:29:08,950 | INFO     | 📄 MD guardado: C:\Users\alien\Downloads\cíclope_mitologías_verbales\cíclope_en_siete_capas\capas\CAPA2_genealogia\TSR_CAPA2_FINAL_CONSOLIDADO.md
+2026-02-15 11:29:08,951 | INFO     | ============================================================
